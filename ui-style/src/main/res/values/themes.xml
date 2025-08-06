@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/orange</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textSize">@dimen/font_size_default</item>
+
+        <!-- 全局按钮样式 -->
+        <item name="buttonStyle">@style/AppButton</item>
+        <!-- 全局输入框样式 -->
+        <item name="editTextStyle">@style/AppEditText</item>
+    </style>
+</resources>

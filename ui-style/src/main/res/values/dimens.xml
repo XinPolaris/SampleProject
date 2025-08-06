@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="font_size_default">20sp</dimen>
+    <dimen name="corner_radius">8dp</dimen>
+    <dimen name="padding_horizontal">16dp</dimen>
+    <dimen name="padding_vertical">12dp</dimen>
+</resources>
