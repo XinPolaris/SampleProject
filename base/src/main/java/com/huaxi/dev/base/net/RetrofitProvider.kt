@@ -1,5 +1,6 @@
 package com.huaxi.dev.base.net
 
+import com.huaxi.dev.base.gson.GsonProvider
 import com.huaxi.dev.base.net.env.EnvironmentManager
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -15,7 +16,7 @@ object RetrofitProvider {
         return Retrofit.Builder()
             .baseUrl(EnvironmentManager.getCurrentEnvironment().baseUrl)
             .client(OkHttpClientProvider.client)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(GsonProvider.instance))
             .build()
     }
 
