@@ -1,5 +1,6 @@
 package com.huaxi.dev.base.net
 
+import com.huaxi.dev.base.net.env.EnvironmentManager
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

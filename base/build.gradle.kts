@@ -30,6 +30,11 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -60,4 +65,6 @@ dependencies {
     api("org.greenrobot:greendao:3.3.0")
 
     api("com.tencent:mmkv:1.3.1")
+
+    api("com.blankj:utilcodex:1.31.1")
 }

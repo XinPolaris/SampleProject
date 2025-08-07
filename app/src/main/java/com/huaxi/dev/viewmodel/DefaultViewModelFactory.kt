@@ -7,6 +7,7 @@ import com.huaxi.dev.repository.UserRepository
 
 class DefaultViewModelFactory : ViewModelProvider.Factory {
 
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {

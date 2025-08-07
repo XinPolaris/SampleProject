@@ -2,6 +2,7 @@ package com.huaxi.dev.main
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.core.view.isVisible
 import com.huaxi.dev.base.navigator.IFragment
 import com.huaxi.dev.base.navigator.Navigator
 import com.huaxi.dev.base.navigator.NavigatorActivity
@@ -32,6 +33,7 @@ class MainActivity : NavigatorActivity() {
 
     override fun getFragmentContainerId(): Int = binding.fragmentContainer.id
     override fun onFragmentBackStackChanged(fragment: IFragment) {
+        binding.btnBack.isVisible = fragment !is MainFragmentA
         binding.tvTitle.text = fragment.getTitle()
     }
 }

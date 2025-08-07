@@ -1,4 +1,7 @@
-package com.huaxi.dev.base.net
+package com.huaxi.dev.base.net.env
+
+import com.huaxi.dev.base.BuildConfig
+import com.huaxi.dev.base.net.RetrofitProvider
 
 
 /**
@@ -6,7 +9,8 @@ package com.huaxi.dev.base.net
  */
 object EnvironmentManager {
     // 默认环境
-    private var currentEnv: Environment = Environment.PROD
+    private var currentEnv =
+        if (BuildConfig.DEBUG) Environment.TEST else Environment.PROD
 
     fun getCurrentEnvironment(): Environment = currentEnv
 

@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.huaxi.dev.data.remote.user.UserContract
+import com.huaxi.dev.data.model.User
 import com.huaxi.dev.repository.UserRepository
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: UserRepository) : ViewModel() {
 
-    private val _loginResult = MutableLiveData<Result<UserContract.UserProfile>>()
-    val loginResult: LiveData<Result<UserContract.UserProfile>> = _loginResult
+    private val _loginResult = MutableLiveData<Result<User>>()
+    val loginResult: LiveData<Result<User>> = _loginResult
 
     fun login(username: String, password: String) {
         viewModelScope.launch {

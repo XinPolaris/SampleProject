@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import com.huaxi.dev.base.ui.BaseActivity
 import com.huaxi.dev.databinding.ActivityLoginBinding
 import com.huaxi.dev.viewmodel.DefaultViewModelFactory
+import kotlin.onSuccess
 
 class LoginActivity : BaseActivity() {
     private val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }

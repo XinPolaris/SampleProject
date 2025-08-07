@@ -23,7 +23,7 @@ open class BaseApplication : Application() {
     }
 
     // 使用 DefaultLifecycleObserver 监听生命周期
-    class AppLifecycleObserver : DefaultLifecycleObserver {
+    private class AppLifecycleObserver : DefaultLifecycleObserver {
 
         override fun onStart(owner: LifecycleOwner) {
             Log.i(TAG, "App entered foreground")
