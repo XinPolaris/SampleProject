@@ -2,22 +2,32 @@ package com.huaxi.dev.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import com.huaxi.dev.base.lifecycle.collectWithLifecycle
-import com.huaxi.dev.base.ui.BaseVMActivity
+import com.huaxi.dev.base.ui.BaseVMFragment
+import com.huaxi.dev.base.ui.ext.viewBinding
 import com.huaxi.dev.databinding.ActivityLoginBinding
 import com.huaxi.dev.main.MainActivity
 import com.huaxi.dev.viewmodel.DefaultViewModelFactory
 
-class LoginActivity : BaseVMActivity<LoginViewModel>() {
-    private val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
+class LoginFragment : BaseVMFragment<LoginViewModel>() {
+
+    private val binding by viewBinding(ActivityLoginBinding::inflate)
+
     override val viewModel: LoginViewModel by viewModels { DefaultViewModelFactory() }
+    //如果想跟Activity共用viewmodel
+//    private val viewModel: LoginViewModel by activityViewModels { DefaultViewModelFactory() }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ) = binding.root
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initListeners()
         observeLoginResult()
     }
@@ -29,7 +39,7 @@ class LoginActivity : BaseVMActivity<LoginViewModel>() {
             if (username.isNotEmpty() && password.isNotEmpty()) {
                 viewModel.login(username, password)
             } else {
-                Toast.makeText(this, "请输入用户名和密码", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "请输入用户名和密码", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -38,14 +48,13 @@ class LoginActivity : BaseVMActivity<LoginViewModel>() {
         collectWithLifecycle(viewModel.loginResult) { result ->
             result?.onSuccess { user ->
                 Toast.makeText(
-                    this@LoginActivity, "欢迎，${user.name}", Toast.LENGTH_SHORT
+                    requireContext(), "欢迎，${user.name}", Toast.LENGTH_SHORT
                 ).show()
                 // 跳转主页
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
-                finish()
+                startActivity(Intent(requireContext(), MainActivity::class.java))
             }?.onFailure { e ->
                 Toast.makeText(
-                    this@LoginActivity, "登录失败: ${e.message}", Toast.LENGTH_SHORT
+                    requireContext(), "登录失败: ${e.message}", Toast.LENGTH_SHORT
                 ).show()
             }
         }

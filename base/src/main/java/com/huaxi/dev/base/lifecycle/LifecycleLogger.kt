@@ -9,6 +9,9 @@ import androidx.lifecycle.LifecycleOwner
  */
 interface LifecycleLogger
 
+/**
+ * 打印生命周期
+ */
 fun LifecycleLogger.logLifecycle(owner: LifecycleOwner) {
     val tag = "LifeCycle"
     val identity = "${owner.javaClass.simpleName}@${owner.hashCode().toString(16)}"

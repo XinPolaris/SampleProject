@@ -19,7 +19,17 @@ open class BaseApplication : Application() {
         ProcessLifecycleOwner.get().lifecycle.addObserver(AppLifecycleObserver())
         // 初始化 MMKV
         MMKV.initialize(this)
-        Log.i(TAG, "BaseApplication onCreate: initialization complete")
+        Log.i(TAG, "App onCreate: initialization complete")
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        Log.w(TAG, "App received onLowMemory callback")
+    }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        Log.w(TAG, "App received onTrimMemory callback, level = $level")
     }
 
     // 使用 DefaultLifecycleObserver 监听生命周期
