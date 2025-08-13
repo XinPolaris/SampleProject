@@ -27,7 +27,7 @@ class LoginView(context: Context, attrs: AttributeSet? = null) : BaseVMView(cont
                     context, "欢迎，${user.name}", Toast.LENGTH_SHORT
                 ).show()
                 // 跳转主页
-                context.startActivity(Intent(requireContext(), MainActivity::class.java))
+                context.startActivity(Intent(context, MainActivity::class.java))
             }?.onFailure { e ->
                 Toast.makeText(
                     context, "登录失败: ${e.message}", Toast.LENGTH_SHORT
